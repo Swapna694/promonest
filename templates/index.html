@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campaign Tracker</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style>
+/* Smooth button styling */
+.cta {
+    background: #1cc88a;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.cta:hover {
+    background: #17a673;
+    transform: scale(1.05);
+}
+
+/* Hidden form */
+.hidden {
+    display: none;
+}
+
+/* Optional form container styling */
+.form-container {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f9fc;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section id="hero">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <h1>PromoNest </h1>
+            <p>A central place to manage and track campaigns</p>
+            <button class="cta" onclick="scrollToSection('addCampaignSection')">Get Started</button>
+            <button class="cta" onclick="scrollToSection('features')">Learn More</button>
+        </div>
+    </div>
+</section>
+
+<!-- Why Use Promonest Section -->
+<section id="why-use-promonest" style="background: linear-gradient(135deg, #4e73df, #1cc88a); color: white; padding: 80px 20px; font-family: 'Poppins', sans-serif;">
+    <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+        <!-- Text Content -->
+        <div style="flex: 1; min-width: 300px;">
+            <h2 style="font-size: 2.8em; margin-bottom: 10px; font-weight: 700;">Why Use Promonest</h2>
+            <p style="font-size: 1.2em; font-weight: 600; margin-bottom: 20px;">Track. Manage. Grow.</p>
+            <p style="font-size: 1em; line-height: 1.8; margin-bottom: 30px;">
+                Promonest is your all-in-one campaign tracking platform designed to simplify marketing management. 
+                Whether you’re a marketer, entrepreneur, or business team, Promonest helps you organize, monitor, and optimize every campaign — all in one place.
+            </p>
+            <ul style="list-style: none; padding: 0; font-size: 1em; line-height: 2;">
+                <li>✅ <strong>Smart & Simple Dashboard:</strong> Easily add, edit, and delete campaigns anytime.</li>
+                <li>✅ <strong>Centralized Management:</strong> Keep all your campaigns organized in one clear view.</li>
+                <li>✅ <strong>Time-Saving Efficiency:</strong> No more juggling spreadsheets or missing updates.</li>
+                <li>✅ <strong>Real-Time Control:</strong> Stay flexible and make quick changes when needed.</li>
+                <li>✅ <strong>Built for Growth:</strong> Plan smarter, execute faster, and grow your business confidently.</li>
+            </ul>
+        </div>
+
+        <!-- Image / Illustration -->
+        <div style="flex: 1; min-width: 300px; text-align: center;">
+            <img src="https://nexalab.io/blog/wp-content/uploads/2025/05/digital-marketing-dashboard.webp" 
+                 alt="Marketing Dashboard Illustration" 
+                 style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" style="padding: 80px 20px; background-color: #f8f9fc; font-family: 'Poppins', sans-serif; text-align: center;">
+    <h2 style="font-size: 2.8em; margin-bottom: 40px; color: #4e73df;">Features</h2>
+    <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: auto;">
+        <div class="feature-card">Real-time Analytics</div>
+        <div class="feature-card">Multi-Channel Management</div>
+        <div class="feature-card">Campaign Status Updates</div>
+        <div class="feature-card">Easy Collaboration</div>
+    </div>
+</section>
+
+<!-- Add / Manage Campaign Section -->
+<section id="addCampaignSection" style="padding: 60px 20px;">
+    <h2>Add New Campaign</h2>
+    <button id="addBtn" class="btn-primary">+ Add New Campaign</button>
+
+    <div id="campaignForm" class="hidden form-container">
+        <input type="text" id="campaign" placeholder="Campaign Name">
+        <input type="text" id="campaignManager" placeholder="Campaign Manager">
+        <input type="date" id="startDate" placeholder="Start Date">
+        <textarea id="description" placeholder="Brief Description"></textarea>
+        <input type="number" id="budget" placeholder="Budget">
+        <select id="status">
+            <option value="Active">Active</option>
+            <option value="Paused">Paused</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <button id="saveBtn" class="btn-primary">Save Campaign</button>
+    </div>
+
+    <h2>All Campaigns</h2>
+    <table id="campaignTable" style="width:100%; margin-top:20px; border-collapse: collapse;">
+        <thead>
+            <tr style="background: #4e73df; color: white;">
+                <th>Campaign</th>
+                <th>Campaign Manager</th>
+                <th>Start Date</th>
+                <th>Description</th>
+                <th>Budget</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="campaignList"></tbody>
+    </table>
+</section>
+
+<!-- Footer -->
+<footer style="padding: 40px 20px; text-align: center; background: #f8f9fc;">
+    <p>Contact: support@promonest.com</p>
+    <div class="social">
+        <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+    </div>
+</footer>
+
+<!-- Scroll Function -->
+<script>
+function scrollToSection(id) {
+    const section = document.getElementById(id);
+    if (section) {
+        const yOffset = -20; // adjust offset if you have fixed header
+        const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+}
+</script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

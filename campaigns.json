@@ -1,0 +1,50 @@
+[
+    {
+        "businessName": "Summer Sale 2025",
+        "campaignManager": "Deepak K C",
+        "startDate": "2025-06-09",
+        "description": "Discount campaign to boost summer product sales.",
+        "budget": "70000",
+        "status": "Active"
+    },
+    {
+        "businessName": "New Product Launch",
+        "campaignManager": "Smith",
+        "startDate": "2025-09-06",
+        "description": "Launching new eco-friendly product line.",
+        "budget": "9000",
+        "status": "Active"
+    },
+    {
+        "businessName": "Ecoclean",
+        "campaignManager": "Alice",
+        "startDate": "2025-10-10",
+        "description": "Promoting eco-friendly cleaning product online.",
+        "budget": "10000",
+        "status": "Active"
+    },
+    {
+        "businessName": "TechNova",
+        "campaignManager": "Maya Singh",
+        "startDate": "2025-01-06",
+        "description": "Email marketing for new tech gadget launch.",
+        "budget": "5000",
+        "status": "Active"
+    },
+    {
+        "businessName": "GreenBites",
+        "campaignManager": "Vikram",
+        "startDate": "2024-03-05",
+        "description": "Influencer marketing for healthy snack products.",
+        "budget": "8000",
+        "status": "Paused"
+    },
+    {
+        "businessName": "UrbanStyles",
+        "campaignManager": "Harendra",
+        "startDate": "2025-02-10",
+        "description": "Targeted Facebook campaigns for smart home devices.",
+        "budget": "7000",
+        "status": "Completed"
+    }
+]
